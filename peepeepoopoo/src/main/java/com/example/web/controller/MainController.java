@@ -1,7 +1,10 @@
 package com.example.web.controller;
 
+import com.example.web.domain.Course;
 import com.example.web.domain.Teacher;
+import com.example.web.repos.CourseRepo;
 import com.example.web.repos.TeacherRepo;
+import org.apache.catalina.connector.CoyoteAdapter;
 import org.hibernate.annotations.GeneratorType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,6 +43,9 @@ public class MainController {
         model.put("teachers", teachers);
         return "main";
     }
+
+
+
 
 
 

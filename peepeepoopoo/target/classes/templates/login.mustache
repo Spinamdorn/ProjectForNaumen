@@ -2,15 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <title>Spring Security Example </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/static/addcourse.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
 
+<div>
+    <a href="/">Домой</a>
+    <a href="/registration">Зарегистрироваться</a>
+    <br>
+    <br>
+</div>
+<div>
+    Авторизация
+</div>
+
 <form action="/login" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><label> User Name : <input class="field" type="text" name="username"/> </label></div>
+    <div><label> Password: <input  class="field" type="password" name="password"/> </label></div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-    <div><input type="submit" value="Sign In"/></div>
+    <div><input class="button1" type="submit" value="Sign In"/></div>
 </form>
-<a href="/registration">Add new user</a>
+
 </body>
 </html>

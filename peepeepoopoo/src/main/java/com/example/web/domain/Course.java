@@ -23,11 +23,24 @@ public class Course {
     private String tag5_id;
 
 
-    public Course(String name) {
-        this.name = name;
+    public Course() {
     }
 
-    public Course() {
+    public Course(String name, String direction, String start_date,
+                  Integer duration, Integer max_amount_of_stud, String about,
+                  String tag1_id,String tag2_id, String tag3_id, String tag4_id, String tag5_id) {
+        this.name = name;
+        this.direction = direction;
+        this.start_date = start_date;
+        this.duration = duration;
+        this.max_amount_of_stud = max_amount_of_stud;
+        this.about = about;
+        this.tag1_id = tag1_id;
+        this.tag2_id = tag2_id;
+        this.tag3_id = tag3_id;
+        this.tag4_id = tag4_id;
+        this.tag5_id = tag5_id;
+
     }
 
     public Integer getId() {
