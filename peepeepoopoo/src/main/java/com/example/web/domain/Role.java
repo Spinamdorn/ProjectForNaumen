@@ -5,5 +5,5 @@ import javax.persistence.Table;
 
 
 public enum Role {
-    USER;
+    USER, ADMIN;
 }
