@@ -1,9 +1,13 @@
 package com.example.web.controller;
 
 import com.example.web.domain.Course;
+import com.example.web.domain.User;
 import com.example.web.repos.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,7 +19,7 @@ public class CourseController {
     private CourseRepo courseRepo;
 
     @GetMapping("/addcourse")
-    public String course() {
+    public String kek() {
         return "addcourse";
     }
 
@@ -39,7 +43,7 @@ public class CourseController {
     }
 
     @GetMapping("/courses")
-    public String courses(Map<String, Object> model) {
+    public String courses( Map<String, Object> model) {
         Iterable<Course> courses = courseRepo.findAll();
         model.put("courses", courses);
         return "courses";
@@ -55,6 +59,12 @@ public class CourseController {
         }
         model.put("courses", courses);
         return "courses";
+    }
+
+    @GetMapping("/courses/{course}")
+    public String courseEditForm( @PathVariable Course course, Model model){
+        model.addAttribute("course", course);
+        return "courseEdit";
     }
 
 }
