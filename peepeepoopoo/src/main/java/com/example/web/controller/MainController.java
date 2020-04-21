@@ -36,13 +36,12 @@ public class MainController {
     @GetMapping("/main")
     public String main(@RequestParam(name="name", required=false, defaultValue="World") String name,
                            Map<String, Object> model, @AuthenticationPrincipal User user) {
-        //Iterable<Teacher> teachers = teacherRepo.findAll();
-        //model.put("teachers", teachers);
+
         Set<Role> roles = user.getRoles();
 
         if (roles.contains(Role.USER))
         return "redirect:/courses";
-        else return "redirect:/";
+        else return "redirect:/mycourses";
     }
 
 

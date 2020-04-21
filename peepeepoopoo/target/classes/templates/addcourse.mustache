@@ -21,17 +21,28 @@
         <a href="/courses">Курсы</a>
     </div>
     <form method="post">
-        <input class="field" type="text" name="name" placeholder="Название курса"/><br>
-        <input class="field" type="text" name="direction" placeholder="Направление"/><br>
-        <input class="field" type="date" name="start_date" placeholder="Дата начала"/><br>
-        <input class="field" type="number" name="duration" placeholder="Длительность курса(дней)"/><br>
-        <input class="field" type="number" name="max_amount_of_stud" placeholder="Максимальное количество студентов"/><br>
-        <input class="field" type="text" name="about" placeholder="О курсе"/><br>
-        <input class="field" type="text" name="tag1_id" placeholder="Тэг 1"/><br>
-        <input class="field" type="text" name="tag2_id" placeholder="Тэг 2"/><br>
-        <input class="field" type="text" name="tag3_id" placeholder="Тэг 3"/><br>
-        <input class="field" type="text" name="tag4_id" placeholder="Тэг 4"/><br>
-        <input class="field" type="text" name="tag5_id" placeholder="Тэг 5"/><br>
+        <div>Название курса</div>
+        <input class="field" type="text" name="name" /><br><hr>
+        <div>Направление</div>
+        <input class="field" type="text" name="direction" /><br><hr>
+        <div>Направление</div>
+        <input class="field" type="date" name="start_date" /><br><hr>
+        <div>Длительность курса(дней)</div>
+        <input class="field" type="number" name="duration" /><br><hr>
+        <div>Максимальное количество студентов</div>
+        <input class="field" type="number" name="max_amount_of_stud" /><br><hr>
+        <div>О курсе</div>
+        <input class="field" type="text" name="about" /><br><hr>
+        <div>Тэг 1</div>
+        <input class="field" type="text" name="tag1_id" /><br><hr>
+        <div>Тэг 2</div>
+        <input class="field" type="text" name="tag2_id" /><br><hr>
+        <div>Тэг 3</div>
+        <input class="field" type="text" name="tag3_id"  /><br><hr>
+        <div>Тэг 4</div>
+        <input class="field" type="text" name="tag4_id"  /><br><hr>
+        <div>Тэг 5</div>
+        <input class="field" type="text" name="tag5_id" /><br>
 
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
         <button class="button1" type="submit">Добавить</button>
