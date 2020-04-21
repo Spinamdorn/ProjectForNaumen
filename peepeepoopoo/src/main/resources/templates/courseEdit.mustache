@@ -20,33 +20,33 @@
     <div>
         <a href="/courses">Назад</a>
     </div>
-     <form method="post">
-         <div>Название курса</div><hr>
-         <input class="field" type="text" name="name" value="{{course.name}}"/><br>
-         <div>Направление</div><hr>
-         <input class="field" type="text" name="direction" value="{{course.direction}}"/><br>
-         <div>Направление</div><hr>
-         <input class="field" type="date" name="start_date" value="{{course.start_date}}"/><br>
-         <div>Длительность курса(дней)</div><hr>
-         <input class="field" type="number" name="duration" value="{{course.duration}}"/><br>
-         <div>Максимальное количество студентов</div><hr>
-         <input class="field" type="number" name="max_amount_of_stud" value="{{course.max_amount_of_stud}}"/><br>
-         <div>О курсе</div><hr>
-         <input class="field" type="text" name="about" value="{{course.about}}"/><br>
-         <div>Тэг 1</div><hr>
-         <input class="field" type="text" name="tag1_id" value="{{course.tag1_id}}"/><br>
-         <div>Тэг 2</div><hr>
-         <input class="field" type="text" name="tag2_id" value="{{course.tag2_id}}"/><br>
-         <div>Тэг 3</div><hr>
-         <input class="field" type="text" name="tag3_id"  value="{{course.tag3_id}}"/><br>
-         <div>Тэг 4</div><hr>
-         <input class="field" type="text" name="tag4_id"  value="{{course.tag4_id}}"/><br>
-         <div>Тэг 5</div><hr>
-         <input class="field" type="text" name="tag5_id" value="{{course.tag5_id}}"/><br>
+    <form method="post">
+        <div>Название курса</div>
+        <input class="field" type="text" name="name" value="{{course.name}}"/><br><hr>
+        <div>Направление</div>
+        <input class="field" type="text" name="direction" value="{{course.direction}}"/><br><hr>
+        <div>Направление</div>
+        <input class="field" type="date" name="start_date" value="{{course.start_date}}"/><br><hr>
+        <div>Длительность курса(дней)</div>
+        <input class="field" type="number" name="duration" value="{{course.duration}}"/><br><hr>
+        <div>Максимальное количество студентов</div>
+        <input class="field" type="number" name="max_amount_of_stud" value="{{course.max_amount_of_stud}}"/><br><hr>
+        <div>О курсе</div>
+        <input class="field" type="text" name="about" value="{{course.about}}"/><br><hr>
+        <div>Тэг 1</div>
+        <input class="field" type="text" name="tag1_id" value="{{course.tag1_id}}"/><br><hr>
+        <div>Тэг 2</div>
+        <input class="field" type="text" name="tag2_id" value="{{course.tag2_id}}"/><br><hr>
+        <div>Тэг 3</div>
+        <input class="field" type="text" name="tag3_id"  value="{{course.tag3_id}}"/><br><hr>
+        <div>Тэг 4</div>
+        <input class="field" type="text" name="tag4_id"  value="{{course.tag4_id}}"/><br><hr>
+        <div>Тэг 5</div>
+        <input class="field" type="text" name="tag5_id" value="{{course.tag5_id}}"/><br>
 
-          <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-          <button class="button1" type="submit" href="/courses">Сохранить</button>
-      </form>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button class="button1" type="submit" href="/courses">Сохранить</button>
+    </form>
 
 </div>
 </body>
