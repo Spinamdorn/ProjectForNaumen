@@ -22,8 +22,8 @@
     <br>
 </div>
 <div class="title"> Список курсов</div>
-<form method="post" action="filter">
-    <input class="field" type="text" name="filter">
+<form method="get" action="/courses">
+    <input class="field" type="text" name="filter" value="{{filter}}">
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     <button class="button1" type="submit">Найти</button>
 </form>

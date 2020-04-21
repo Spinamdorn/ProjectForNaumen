@@ -21,6 +21,7 @@ public class Course {
     private String tag3_id;
     private String tag4_id;
     private String tag5_id;
+    private Long teacher;
 
 
     public Course() {
@@ -28,7 +29,7 @@ public class Course {
 
     public Course(String name, String direction, String start_date,
                   Integer duration, Integer max_amount_of_stud, String about,
-                  String tag1_id,String tag2_id, String tag3_id, String tag4_id, String tag5_id) {
+                  String tag1_id,String tag2_id, String tag3_id, String tag4_id, String tag5_id,Long teacher) {
         this.name = name;
         this.direction = direction;
         this.start_date = start_date;
@@ -40,7 +41,17 @@ public class Course {
         this.tag3_id = tag3_id;
         this.tag4_id = tag4_id;
         this.tag5_id = tag5_id;
+        this.teacher = teacher;
 
+    }
+
+
+    public Long getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher_id(Long teacher) {
+        this.teacher = teacher;
     }
 
     public Long getId() {
