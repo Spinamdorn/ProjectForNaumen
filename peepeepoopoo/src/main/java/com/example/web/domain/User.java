@@ -16,6 +16,7 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private boolean active;
+    private Long profileId;
 
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -35,7 +36,13 @@ public class User implements UserDetails {
         return username;
     }
 
+    public Long getProfileId() {
+        return profileId;
+    }
 
+    public void setProfileId(Long profileId) {
+        this.profileId = profileId;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

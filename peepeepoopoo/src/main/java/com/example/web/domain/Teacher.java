@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Teacher {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String name;
     private String surname;
     private String patronymic;
@@ -25,11 +25,11 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

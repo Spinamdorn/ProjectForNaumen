@@ -1,9 +1,11 @@
 package com.example.web.controller;
 
 
-import com.example.web.domain.Course;
+
 import com.example.web.domain.Role;
+import com.example.web.domain.Teacher;
 import com.example.web.domain.User;
+import com.example.web.repos.TeacherRepo;
 import com.example.web.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,6 +24,9 @@ import java.util.Map;
 public class UserController {
   @Autowired
   private UserRepo userRepo;
+
+  @Autowired
+  private TeacherRepo teacherRepo;
 
   @GetMapping
   public String getUserList(Model model){
@@ -48,9 +53,11 @@ public class UserController {
       model.put("message","Пользователь существует");
       return "addUser";
     }
-
+    Teacher teacherProfile = new Teacher();
     user.setActive(true);
     user.setRoles(Collections.singleton(Role.TEACHER));
+    teacherRepo.save(teacherProfile);
+    user.setProfileId(teacherProfile.getId());
     userRepo.save(user);
     return "redirect:/users";
   }
