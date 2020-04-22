@@ -106,6 +106,13 @@ public class CourseController {
         return "redirect:/mycourses";
     }
 
+    @PreAuthorize("hasAuthority('TEACHER')")
+    @GetMapping("/mycourses/delete/{course}")
+    public String deleteCourse( @PathVariable Course course, Model model){
+        courseRepo.delete(course);
+        return "redirect:/mycourses";
+    }
+
     @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/courses")
     public String courses( @RequestParam(required = false, defaultValue = "") String filter, Model model) {

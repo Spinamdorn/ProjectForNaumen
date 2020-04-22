@@ -1,6 +1,7 @@
 package com.example.web.service;
 
 import com.example.web.domain.Course;
+import com.example.web.domain.Role;
 import com.example.web.domain.Student;
 import com.example.web.domain.User;
 import com.example.web.repos.CourseRepo;
@@ -11,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -40,4 +43,6 @@ public class UserService implements UserDetailsService {
         student.getCourses().remove(course);
         studentRepo.save(student);
     }
+
+
 }

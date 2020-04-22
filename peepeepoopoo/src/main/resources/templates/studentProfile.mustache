@@ -4,6 +4,7 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="/static/addcourse.css">
+    <link rel="stylesheet" href="/static/courses.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
@@ -18,7 +19,12 @@
 
 
     <div>
-
+        <table>
+            <tr><th>название курса</th><th>направление</th><th>дата начала</th></tr>
+            {{#courses}}
+            <tr><td>{{name}}</td><td>{{direction}}</td><td>{{start_date}}</td><td><a href="/courses/{{id}}">Подробнее</a></td></tr>
+            {{/courses}}
+        </table><br><hr>
     </div>
     <form method="post" action="/profile/editstudentprofile">
 
