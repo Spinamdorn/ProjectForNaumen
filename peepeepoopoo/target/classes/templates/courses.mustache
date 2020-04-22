@@ -16,8 +16,7 @@
     </form>
 </div>
 <div>
-    <a href="/">Домой</a>
-    <a href="/addcourse">Добавить курс</a>
+    <a href="/studentProfile">Мой профиль</a>
     <br>
     <br>
 </div>
@@ -30,7 +29,7 @@
 <table>
     <tr><th>название курса</th><th>направление</th><th>дата начала</th></tr>
     {{#courses}}
-    <tr><td>{{name}}</td><td>{{direction}}</td><td>{{start_date}}</td><td><a href="/courses/{{id}}">Редактировать</a></td></tr>
+    <tr><td>{{name}}</td><td>{{direction}}</td><td>{{start_date}}</td><td><a href="/courses/{{id}}">Подробнее</a><a>Записаться</a></td></tr>
     {{/courses}}
 </table>
 
