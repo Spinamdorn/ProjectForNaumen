@@ -7,10 +7,9 @@
 </head>
 <body>
 <table>
-    <tr><th>Имя</th><th>Роль</th><th></th></tr>
-    {{#users}}
-    <tr><td>{{username}}</td><td>{{roles}}</td><td><a href="/user/{{id}}">Изменить</a></td></tr>
-    {{/users}}
+    <tr><th>Имя</th><th>Пароль</th><th></th></tr>
+
+    <tr><td>{{user.username}}</td><td>{{user.password}}</td><td><a href="/users/delete/{{user.id}}">Удалить</a></td></tr>
 </table>
 
 </body>

@@ -1,9 +1,8 @@
 package com.example.web.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -14,7 +13,11 @@ public class Student {
     private String surname;
     private String patronymic;
     private Integer group_id;
-
+    @ManyToMany
+    @JoinTable(name = "student_subscriptions",
+    joinColumns = { @JoinColumn(name = "student_id")},
+    inverseJoinColumns = {@JoinColumn(name="course_id")})
+    private Set<Course> courses = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -24,9 +27,11 @@ public class Student {
         this.id = id;
     }
 
-    public Student(String name, String surname) {
+    public Student(String name, String surname, String patronymic, Integer group_id) {
         this.name = name;
         this.surname = surname;
+        this.patronymic = patronymic;
+        this.group_id = group_id;
     }
 
     public Student() {
@@ -70,5 +75,13 @@ public class Student {
 
     public void setGroup_id(Integer group) {
         this.group_id = group;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }

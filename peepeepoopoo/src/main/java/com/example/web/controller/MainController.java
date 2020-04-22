@@ -27,10 +27,10 @@ public class MainController {
     private TeacherRepo teacherRepo;
 
     @GetMapping("/")
-    public String greeting(Map<String, Object> model){
-
-    return "greeting";
-
+    public String greeting(@AuthenticationPrincipal User user, Map<String, Object> model){
+    if (user != null)
+    return "redirect:/main";
+    return"greeting";
     }
 
     @GetMapping("/main")
@@ -41,7 +41,9 @@ public class MainController {
 
         if (roles.contains(Role.USER))
         return "redirect:/courses";
-        else return "redirect:/mycourses";
+        else  if (roles.contains(Role.TEACHER))
+            return "redirect:/mycourses";
+        else return "redirect:/users";
     }
 
 
@@ -53,10 +55,5 @@ public class MainController {
         model.put("teachers", teachers);
         return "main";
     }
-
-
-
-
-
 
 }

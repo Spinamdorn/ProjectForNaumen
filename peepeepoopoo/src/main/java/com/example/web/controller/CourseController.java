@@ -3,7 +3,10 @@ package com.example.web.controller;
 import com.example.web.domain.Course;
 import com.example.web.domain.User;
 import com.example.web.repos.CourseRepo;
+import com.example.web.repos.StudentRepo;
+import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +20,19 @@ public class CourseController {
     @Autowired
     private CourseRepo courseRepo;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private StudentRepo studentRepo;
+
+    @PreAuthorize("hasAuthority('TEACHER')")
     @GetMapping("/addcourse")
     public String newCourse() {
         return "addcourse";
     }
 
+    @PreAuthorize("hasAuthority('TEACHER')")
     @PostMapping("/addcourse")
     public String addCourse( @RequestParam String name,
                              @RequestParam String direction,
@@ -43,6 +54,7 @@ public class CourseController {
         return "redirect:/mycourses";
     }
 
+    @PreAuthorize("hasAuthority('TEACHER')")
     @GetMapping("/mycourses")
     public String myCourses(@RequestParam(required = false, defaultValue = "") String filter, Model model, @AuthenticationPrincipal User user) {
         Long user_id = user.getId();
@@ -57,13 +69,14 @@ public class CourseController {
         return "myCourses";
     }
 
-
+    @PreAuthorize("hasAuthority('TEACHER')")
     @GetMapping("/mycourses/{course}")
     public String courseEditForm( @PathVariable Course course, Model model){
         model.addAttribute("course", course);
         return "courseEdit";
     }
 
+    @PreAuthorize("hasAuthority('TEACHER')")
     @PostMapping("/mycourses/{course}")
     public String courseSave(
                              @PathVariable Course course,
@@ -93,6 +106,7 @@ public class CourseController {
         return "redirect:/mycourses";
     }
 
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/courses")
     public String courses( @RequestParam(required = false, defaultValue = "") String filter, Model model) {
         Iterable<Course> courses;
@@ -106,11 +120,28 @@ public class CourseController {
         return "courses";
     }
 
-
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/courses/{course}")
-    public String aboutCourse( @PathVariable Course course, Model model){
+    public String aboutCourse( @AuthenticationPrincipal User user, @PathVariable Course course, Model model){
         model.addAttribute("course", course);
-        return "courseEdit";
+        model.addAttribute("subscribers", course.getStudents().size());
+        String command = "Подписаться";
+
+        if (course.getStudents().contains(studentRepo.findById(user.getProfileId()).get()))  command = "Отписаться";
+        model.addAttribute("command", command);
+        return "course";
     }
+
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping("/courses/subscribe/{course}")
+    public String subscribeCourse(@AuthenticationPrincipal User user, @PathVariable Course course, Model model){
+        if (course.getStudents().contains(studentRepo.findById(user.getProfileId()).get()))
+            userService.unsubscribe(user,course);
+        else
+        userService.subscribe(user,course);
+        return "redirect:/courses/{course}";
+    }
+
+
 
 }

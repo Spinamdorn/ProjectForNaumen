@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/static/addcourse.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div>
+
+    <form class="siout_but" action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Sign Out"/>
+
+    </form>
+
+
+    <div>
+        <a href="/courses">Назад</a>
+    </div>
+    <form method="get" action="/courses/subscribe/{{course.id}}">
+        <div>Название курса {{course.name}}</div>
+        <div>Направление {{course.direction}}</div>
+        <div>Направление {{course.start_date}}</div>
+        <div>Длительность курса(дней) {{course.duration}}</div>
+        <div>Максимальное количество студентов {{course.max_amount_of_stud}}</div>
+        <div>Количество записанных человек {{subscribers}}</div>
+        <div>О курсе {{course.about}}</div>
+        <div>Тэг 1 {{course.tag1_id}}</div>
+        <div>Тэг 2 {{course.tag2_id}}</div>
+        <div>Тэг 3 {{course.tag3_id}}</div>
+        <div>Тэг 4 {{course.tag4_id}}</div>
+        <div>Тэг 5 {{course.tag5_id}}</div>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button class="button1" type="submit">{{command}}</button>
+    </form>
+
+
+</div>
+</body>
+</html>

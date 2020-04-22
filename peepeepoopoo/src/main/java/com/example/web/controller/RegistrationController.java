@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collections;
 import java.util.Map;
@@ -27,7 +28,12 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Map<String,Object> model){
+    public String addUser(User user, Map<String,Object> model,
+                          @RequestParam String name,
+                          @RequestParam String surname,
+                          @RequestParam String patronymic,
+                          @RequestParam Integer group_id
+                           ){
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
         if (userFromDb!=null){
@@ -35,7 +41,7 @@ public class RegistrationController {
             return "registration";
         }
 
-        Student studentProfile = new Student();
+        Student studentProfile = new Student(name, surname, patronymic,group_id);
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         studentRepo.save(studentProfile);

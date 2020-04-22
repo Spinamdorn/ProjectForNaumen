@@ -16,20 +16,19 @@
     </form>
 </div>
 <div>
-    <a href="/studentProfile">Мой профиль</a>
+    <a href="/profile">Мой профиль</a>
     <br>
     <br>
 </div>
 <div class="title"> Список курсов</div>
 <form method="get" action="/courses">
     <input class="field" type="text" name="filter" value="{{filter}}">
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     <button class="button1" type="submit">Найти</button>
 </form>
 <table>
     <tr><th>название курса</th><th>направление</th><th>дата начала</th></tr>
     {{#courses}}
-    <tr><td>{{name}}</td><td>{{direction}}</td><td>{{start_date}}</td><td><a href="/courses/{{id}}">Подробнее</a><a>Записаться</a></td></tr>
+    <tr><td>{{name}}</td><td>{{direction}}</td><td>{{start_date}}</td><td><a href="/courses/{{id}}">Подробнее</a></td></tr>
     {{/courses}}
 </table>
 

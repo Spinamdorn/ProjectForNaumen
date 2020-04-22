@@ -7,6 +7,7 @@ import com.example.web.domain.Teacher;
 import com.example.web.domain.User;
 import com.example.web.repos.TeacherRepo;
 import com.example.web.repos.UserRepo;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -35,9 +36,15 @@ public class UserController {
   }
 
   @GetMapping("/{user}")
-  public String courseEditForm(@PathVariable User user, Model model){
+  public String userEditForm(@PathVariable User user, Model model){
     model.addAttribute("user", user);
     return "user";
+  }
+
+  @GetMapping("/delete/{user}")
+  public String deleteUser(@PathVariable User user, Model model){
+    userRepo.delete(user);
+    return "redirect:/";
   }
 
   @GetMapping("/addUser")

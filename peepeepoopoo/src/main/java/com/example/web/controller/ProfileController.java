@@ -96,6 +96,6 @@ public class ProfileController {
             userRepo.save(user);
 
 
-        return "redirect:/courses";
+        return "redirect:/mycourses";
     }
 }

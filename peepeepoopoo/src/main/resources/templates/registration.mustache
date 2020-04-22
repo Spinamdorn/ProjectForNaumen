@@ -9,7 +9,6 @@
 </head>
 <body>
 <div>
-    <!--<a href="/">Домой</a>-->
     <a href="/login">Авторизоваться</a>
     <br>
     <br>
@@ -19,10 +18,14 @@
 </div>
 
 <form action="/registration" method="post">
-    <div><label> User Name : <input class="field" type="text" name="username"/> </label></div>
-    <div><label> Password: <input class="field" type="password" name="password"/> </label></div>
+    <div><label> Имя : <input class="field" type="text" name="name"/> </label></div>
+    <div><label> Фамилия : <input class="field" type="text" name="surname"/> </label></div>
+    <div><label> Отчество : <input class="field" type="text" name="patronymic"/> </label></div>
+    <div><label> Группа : <input class="field" type="number" name="group_id"/> </label></div><hr>
+    <div><label> Логин : <input class="field" type="text" name="username"/> </label></div>
+    <div><label> Пароль: <input class="field" type="password" name="password"/> </label></div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-    <div><input class="button1" type="submit" value="Sign In"/></div>
+    <div><input class="button1" type="submit" value="Зарегистрироваться"/></div>
 </form>
 </body>
 </html>
