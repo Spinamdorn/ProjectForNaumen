@@ -4,6 +4,7 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="/static/addcourse.css">
+    <link rel="stylesheet" href="/static/courses.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
@@ -12,20 +13,30 @@
 
     <form class="siout_but" action="/logout" method="post">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <input type="submit" value="Sign Out"/>
+        <input type="submit" value="Выйти"/>
 
     </form>
 
 
     <div>
-        <a href="/mycourses">Назад</a>
+        <a href="/mycourses">Назад</a><br><br>
     </div>
+    <div>
+        Записанные студенты
+        <table>
+        <tr><th>Имя</th><th>Фамилия</th><th>Отчество</th></tr>
+            {{#subscribers}}
+        <tr><td>{{name}}</td><td>{{surname}}</td><td>{{patronymic}}</td></tr>
+            {{/subscribers}}
+        </table><br>
+    </div>
+
     <form method="post">
         <div>Название курса</div>
         <input class="field" type="text" name="name" value="{{course.name}}"/><br><hr>
         <div>Направление</div>
         <input class="field" type="text" name="direction" value="{{course.direction}}"/><br><hr>
-        <div>Направление</div>
+        <div>Дата начала курса</div>
         <input class="field" type="date" name="start_date" value="{{course.start_date}}"/><br><hr>
         <div>Длительность курса(дней)</div>
         <input class="field" type="number" name="duration" value="{{course.duration}}"/><br><hr>

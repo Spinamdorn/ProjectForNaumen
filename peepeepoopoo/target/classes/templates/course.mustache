@@ -12,7 +12,7 @@
 
     <form class="siout_but" action="/logout" method="post">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <input type="submit" value="Sign Out"/>
+        <input type="submit" value="Выйти"/>
 
     </form>
 
@@ -23,7 +23,8 @@
     <form method="get" action="/courses/subscribe/{{course.id}}">
         <div>Название курса {{course.name}}</div>
         <div>Направление {{course.direction}}</div>
-        <div>Направление {{course.start_date}}</div>
+        <div>Дата старта {{course.start_date}}</div>
+        <div>Преподаватель {{teacher.name}} {{teacher.surname}} {{teacher.patronymic}}</div>
         <div>Длительность курса(дней) {{course.duration}}</div>
         <div>Максимальное количество студентов {{course.max_amount_of_stud}}</div>
         <div>Количество записанных человек {{subscribers}}</div>

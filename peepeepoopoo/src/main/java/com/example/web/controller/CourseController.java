@@ -1,9 +1,12 @@
 package com.example.web.controller;
 
 import com.example.web.domain.Course;
+import com.example.web.domain.Teacher;
 import com.example.web.domain.User;
 import com.example.web.repos.CourseRepo;
 import com.example.web.repos.StudentRepo;
+import com.example.web.repos.TeacherRepo;
+import com.example.web.repos.UserRepo;
 import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,10 +24,16 @@ public class CourseController {
     private CourseRepo courseRepo;
 
     @Autowired
+    private UserRepo userRepo;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
     private StudentRepo studentRepo;
+
+    @Autowired
+    private TeacherRepo teacherRepo;
 
     @PreAuthorize("hasAuthority('TEACHER')")
     @GetMapping("/addcourse")
@@ -72,6 +81,7 @@ public class CourseController {
     @PreAuthorize("hasAuthority('TEACHER')")
     @GetMapping("/mycourses/{course}")
     public String courseEditForm( @PathVariable Course course, Model model){
+        model.addAttribute("subscribers", course.getStudents());
         model.addAttribute("course", course);
         return "courseEdit";
     }
@@ -130,8 +140,11 @@ public class CourseController {
     @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/courses/{course}")
     public String aboutCourse( @AuthenticationPrincipal User user, @PathVariable Course course, Model model){
+        User teacher = userRepo.findById(course.getTeacher()).get();
+        Teacher teacherProfile = teacherRepo.findById(teacher.getProfileId()).get();
         model.addAttribute("course", course);
         model.addAttribute("subscribers", course.getStudents().size());
+        model.addAttribute("teacher", teacherProfile);
         String command = "Подписаться";
 
         if (course.getStudents().contains(studentRepo.findById(user.getProfileId()).get()))  command = "Отписаться";
